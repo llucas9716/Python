@@ -1,1 +1,24 @@
+# Define a class Solution that contains a method search for performing binary search on a given input list
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        # Initialize left and right pointers to the start and end indices of the list
+        left, right = 0, len(nums)-1
 
+        # Loop while the left index is less than or equal to the right index
+        while left <= right:
+            # Calculate the middle index of the current range using integer division
+            mid = (left + right) // 2
+
+            # If the middle value is equal to the target value, return the middle index
+            if nums[mid] == target:
+                return mid
+
+            # If the middle value is less than the target value, update the left pointer to mid+1
+            if nums[mid] < target:
+                left = mid + 1
+            # If the middle value is greater than the target value, update the right pointer to mid-1
+            else:
+                right = mid - 1
+        
+        # If the target value is not found in the list, return -1
+        return -1
